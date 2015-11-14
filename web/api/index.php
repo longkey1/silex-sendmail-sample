@@ -1,14 +1,17 @@
 <?php
-require_once __DIR__.'/../vendor/autoload.php';
+require_once __DIR__.'/../../vendor/autoload.php';
 
 use Symfony\Component\HttpFoundation\Request;
 
 $app = new Silex\Application();
 
+// path
+$app['root_dir'] = __DIR__ . '/../..';
+
 // validator
 $app->register(new Silex\Provider\ValidatorServiceProvider());
 $app['validator.mapping.class_metadata_factory'] = new Symfony\Component\Validator\Mapping\ClassMetadataFactory(
-    new Symfony\Component\Validator\Mapping\Loader\YamlFileLoader(__DIR__ . '/../config/validation.yml')
+    new Symfony\Component\Validator\Mapping\Loader\YamlFileLoader($app['root_dir'] . '/config/validation.yml')
 );
 
 // swiftmailer
@@ -24,7 +27,7 @@ $app['swiftmailer.options'] = [
 
 // twig
 $app->register(new Silex\Provider\TwigServiceProvider());
-$app['twig.path'] = __DIR__ . '/../views';
+$app['twig.path'] = $app['root_dir'] . '/views';
 
 // maildata
 class Maildata
