@@ -1,0 +1,6 @@
+export MAIL_TRANSPORT="smtp"
+export MAIL_HOST="mailtrap.io"
+export MAIL_PORT="2525"
+export MAIL_USERNAME="hogehoge"
+export MAIL_PASSWORD="hogehoge"
+export MAIL_AUTH_MODE="cram-md5"
