@@ -1,0 +1,10 @@
+MailData:
+  properties:
+    name:
+      - NotBlank: ~
+    email:
+      - NotBlank: ~
+      - Email: ~
+    memo:
+      - Length:
+          max: 10
